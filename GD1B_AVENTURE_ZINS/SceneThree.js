@@ -19,7 +19,7 @@ class SceneThree extends Phaser.Scene{
         bloquant.setCollisionByExclusion(-1, true);
         zone.setCollisionByExclusion(-1, true);
 
-        player = this.physics.add.sprite(600, 400, 'player');
+        player = this.physics.add.sprite(600, 400, 'player').setScale(.9);
         
         full_heart_1 = this.add.sprite(50,50, 'full_heart');
         full_heart_2 = this.add.sprite(100,50, 'full_heart');

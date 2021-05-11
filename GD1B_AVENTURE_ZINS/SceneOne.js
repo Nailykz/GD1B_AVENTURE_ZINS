@@ -49,9 +49,9 @@ class SceneOne extends Phaser.Scene{
     init(data){
     }
     preload(){   
-        this.load.image('tiles', 'assets/tileset_placeholder.jpg');
+        this.load.image('tiles', 'assets/tileset_placeholder.png');
         this.load.tilemapTiledJSON('map_1', 'map_1.json');
-        this.load.spritesheet('player', 'assets/player.png', {frameWidth: 32, frameHeight: 32});
+        this.load.spritesheet('player', 'assets/player.png', {frameWidth: 72, frameHeight: 90});
         this.load.image('Argent', 'assets/monnaie.png'); 
         this.load.image('ennemi', 'assets/ennemi.png');
         this.load.image('chest', 'assets/chest.png');
@@ -67,7 +67,7 @@ class SceneOne extends Phaser.Scene{
     create(){
         
         const map = this.make.tilemap({key: 'map_1'});
-        const tileset = map.addTilesetImage('tileset_placeholder', 'tiles');
+        const tileset = map.addTilesetImage('tileset_placeholder_2', 'tiles');
         const terrain = map.createLayer('terrain', tileset, 0, 0);
         const bloquant = map.createLayer('bloquant', tileset, 0, 0);
         const zone = map.createLayer('zone', tileset, 0, 0);
@@ -75,7 +75,7 @@ class SceneOne extends Phaser.Scene{
         bloquant.setCollisionByExclusion(-1, true);
         zone.setCollisionByExclusion(-1, true);
 
-        player = this.physics.add.sprite(500, 500, 'player');
+        player = this.physics.add.sprite(500, 500, 'player').setScale(.9);
         full_heart_1 = this.add.sprite(50,50, 'full_heart');
         full_heart_2 = this.add.sprite(100,50, 'full_heart');
         full_heart_3 = this.add.sprite(150,50, 'full_heart');
@@ -136,25 +136,25 @@ class SceneOne extends Phaser.Scene{
         
         this.anims.create({
         key: 'right',
-        frames: this.anims.generateFrameNumbers('player', { start: 1, end: 1 }),
+        frames: this.anims.generateFrameNumbers('player', { start: 4, end: 7 }),
         frameRate: 10,
         repeat: -1
         });
         this.anims.create({
         key: 'left',
-        frames: this.anims.generateFrameNumbers('player', { start: 2, end: 2 }),
+        frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3}),
         frameRate: 10,
         repeat: -1
         });
         this.anims.create({
         key: 'up',
-        frames: this.anims.generateFrameNumbers('player', { start: 0, end: 0 }),
+        frames: this.anims.generateFrameNumbers('player', { start: 11, end:  13}),
         frameRate: 10,
         repeat: -1
         });
         this.anims.create({
         key: 'down',
-        frames: this.anims.generateFrameNumbers('player', { start: 3, end: 3 }),
+        frames: this.anims.generateFrameNumbers('player', { start: 8, end: 10 }),
         frameRate: 10,
         repeat: -1
         });
